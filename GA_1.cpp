@@ -18,7 +18,7 @@ int main()
 			Data_file >> data[i][j];
 
 
-	cout << "데이터 값" << endl;
+	// cout << "데이터 값" << endl;
 	for (i = 0; i < 75; i++)
 	{
 		for (j = 0; j < 2; j++)
