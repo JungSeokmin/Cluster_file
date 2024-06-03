@@ -1,33 +1,20 @@
-name: Code Review with ChatGPT
+name: Code Review From ChatGPT
+
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  code_review:
+  code-review:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests openai
-
-    - name: Debug PR_NUMBER
-      run: echo "PR_NUMBER=${{ github.event.pull_request.number }}"
-
-    - name: Run code review script
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        PR_NUMBER: ${{ github.event.pull_request.number }}
-      run: python .github/scripts/code_review.py
+      - uses: anc95/ChatGPT-CodeReview@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LANGUAGE: Korean
+          MODEL: gpt-3.5-turbo
