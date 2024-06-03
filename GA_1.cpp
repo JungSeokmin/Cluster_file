@@ -17,7 +17,7 @@ int main()
 		for (j = 0; j < 2; j++)
 			Data_file >> data[i][j];
 
-
+	/*
 	cout << "데이터 값" << endl;
 	for (i = 0; i < 75; i++)
 	{
@@ -26,7 +26,7 @@ int main()
 		cout << endl;
 	}
 	cout << endl;
-
+	*/
 	
 	int cluster[75][4] = { 0 };
 	/*
