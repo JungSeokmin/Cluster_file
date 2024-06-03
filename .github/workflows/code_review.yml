@@ -1,9 +1,6 @@
 name: Code Review with ChatGPT
 
 on:
-  push:
-    branches:
-      - main  # 주 브랜치에 커밋될 때마다 트리거
   pull_request:
     types: [opened, synchronize]
 
