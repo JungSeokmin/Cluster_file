@@ -9,6 +9,11 @@ REPO_OWNER = 'repo_owner'  # 실제 저장소 소유자로 변경
 REPO_NAME = 'repo_name'  # 실제 저장소 이름으로 변경
 PR_NUMBER = os.getenv('PR_NUMBER')
 
+if not PR_NUMBER:
+    raise ValueError("PR_NUMBER 환경 변수가 설정되지 않았습니다.")
+
+print(f"DEBUG: PR_NUMBER={PR_NUMBER}")
+
 # OpenAI 설정
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
