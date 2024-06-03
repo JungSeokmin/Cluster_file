@@ -1,12 +1,13 @@
 import os
 import requests
+import base64
 import openai
 
 # GitHub 설정
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-REPO_OWNER = 'repo_owner'
-REPO_NAME = 'repo_name'
-PR_NUMBER = os.getenv('PR_NUMBER')  # pull_request 이벤트의 경우 사용
+REPO_OWNER = 'repo_owner'  # 실제 저장소 소유자로 변경
+REPO_NAME = 'repo_name'  # 실제 저장소 이름으로 변경
+PR_NUMBER = os.getenv('PR_NUMBER')
 
 # OpenAI 설정
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -24,7 +25,7 @@ def get_file_content(repo_owner, repo_name, file_path, token):
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
     response.raise_for_status()
-    file_content = response.json()['content']
+    file_content = base64.b64decode(response.json()['content']).decode('utf-8')
     return file_content
 
 def get_code_review_from_chatgpt(file_content, openai_api_key):
