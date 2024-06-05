@@ -1,4 +1,4 @@
-# .github/workflows/cr.yml 파일 생성
+# .github/workflows/core_review.yml 파일 생성
 
 name: Code Review
 
